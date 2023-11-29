@@ -11,6 +11,7 @@ import ru.retrozoomer.practiceclothingshop.entity.User;
 import ru.retrozoomer.practiceclothingshop.repository.UserRepository;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -37,21 +38,22 @@ public class UserService implements UserDetailsService {
         return userFromDb.orElse(new User());
     }
 
-    public boolean saveUser(User user) {
-        User userFromDb = userRepository.findByUsername(user.getUsername());
+    public List<User> findAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users;
+    }
 
-        if (userFromDb != null) {
-            return false;
-        }
+    public User saveUser(User user) {
+        User userFromDb = userRepository.findByUsername(user.getUsername());
 
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
-        return true;
+        return user;
     }
 
-    public boolean updateUser(User user) {
+    public User updateUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
 
         user.setRoles(userFromDB.getRoles());
@@ -60,14 +62,10 @@ public class UserService implements UserDetailsService {
         }
         userRepository.save(user);
 
-        return true;
+        return user;
     }
 
-    public boolean deleteUser(Long userId) {
-        if (userRepository.findById(userId).isPresent()) {
-            userRepository.deleteById(userId);
-            return true;
-        }
-        return false;
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 }
