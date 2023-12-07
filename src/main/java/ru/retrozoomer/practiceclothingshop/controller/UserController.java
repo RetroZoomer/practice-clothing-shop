@@ -10,7 +10,7 @@ import ru.retrozoomer.practiceclothingshop.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired

@@ -6,8 +6,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ru.retrozoomer.practiceclothingshop.entity.ERole;
 import ru.retrozoomer.practiceclothingshop.entity.Role;
 import ru.retrozoomer.practiceclothingshop.entity.User;
+import ru.retrozoomer.practiceclothingshop.repository.RoleRepository;
 import ru.retrozoomer.practiceclothingshop.repository.UserRepository;
 
 import java.util.Collections;
@@ -20,9 +23,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
     @Autowired
+    RoleRepository roleRepository;
+    @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
 
@@ -46,7 +52,8 @@ public class UserService implements UserDetailsService {
     public User saveUser(User user) {
         User userFromDb = userRepository.findByUsername(user.getUsername());
 
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        Role userRole = roleRepository.findByName(String.valueOf(ERole.ROLE_USER));
+        user.setRoles(Collections.singleton(userRole));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 

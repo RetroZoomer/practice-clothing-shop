@@ -12,12 +12,12 @@ import java.util.Set;
 public class Role implements GrantedAuthority {
     @Id
     private Long id;
-    private String name;
+    private ERole name;
     @Transient
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public Role(Long id, String name) {
+    public Role(Long id, ERole name) {
         this.id = id;
         this.name = name;
     }
@@ -28,6 +28,6 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return getName();
+        return String.valueOf(getName());
     }
 }
