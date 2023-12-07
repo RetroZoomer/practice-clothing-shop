@@ -1,9 +1,8 @@
-package ru.retrozoomer.practiceclothingshop.entity;
+package ru.retrozoomer.practiceclothingshop.entity.product;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
@@ -12,8 +11,12 @@ import java.util.Set;
 public class Size {
     @Id
     private Long id;
+
     @Enumerated(EnumType.STRING)
-    private EFit EFit;
+    private EFit fit;
+
+    private int count;
+
     @ManyToMany(mappedBy = "sizes")
-    private Set<ProductShowcase> productShowcases;
+    private Set<Product> products;
 }

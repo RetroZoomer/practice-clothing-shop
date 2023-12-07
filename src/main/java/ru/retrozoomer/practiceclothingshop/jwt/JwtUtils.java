@@ -1,21 +1,20 @@
 package ru.retrozoomer.practiceclothingshop.jwt;
 
-import java.util.Date;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
 import io.jsonwebtoken.*;
-import ru.retrozoomer.practiceclothingshop.service.UserDetailsImpl;
-import ru.retrozoomer.practiceclothingshop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import ru.retrozoomer.practiceclothingshop.service.UserDetailsImpl;
+
+import java.util.Date;
 
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
-    @Value("${bezkoder.app.jwtSecret}")
+    @Value("${retroZoomer.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${bezkoder.app.jwtExpirationMs}")
+    @Value("${retroZoomer.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {

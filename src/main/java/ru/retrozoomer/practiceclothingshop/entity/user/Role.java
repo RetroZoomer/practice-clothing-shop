@@ -1,4 +1,4 @@
-package ru.retrozoomer.practiceclothingshop.entity;
+package ru.retrozoomer.practiceclothingshop.entity.user;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

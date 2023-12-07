@@ -7,9 +7,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.retrozoomer.practiceclothingshop.entity.ERole;
-import ru.retrozoomer.practiceclothingshop.entity.Role;
-import ru.retrozoomer.practiceclothingshop.entity.User;
+import ru.retrozoomer.practiceclothingshop.entity.user.ERole;
+import ru.retrozoomer.practiceclothingshop.entity.user.Role;
+import ru.retrozoomer.practiceclothingshop.entity.user.User;
 import ru.retrozoomer.practiceclothingshop.repository.RoleRepository;
 import ru.retrozoomer.practiceclothingshop.repository.UserRepository;
 

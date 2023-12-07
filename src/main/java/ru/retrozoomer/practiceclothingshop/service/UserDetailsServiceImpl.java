@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.retrozoomer.practiceclothingshop.entity.User;
+import ru.retrozoomer.practiceclothingshop.entity.user.User;
 import ru.retrozoomer.practiceclothingshop.repository.UserRepository;
 
 @Service

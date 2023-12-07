@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.retrozoomer.practiceclothingshop.entity.User;
+import ru.retrozoomer.practiceclothingshop.entity.user.User;
 import ru.retrozoomer.practiceclothingshop.service.UserService;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class UserController {
     @PutMapping("/update")
     public ResponseEntity<User> updateUser(@RequestBody User user)  {
         try {
-            User updateUser = userService.saveUser(user);
+            User updateUser = userService.updateUser(user);
             return new ResponseEntity<>(updateUser, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
