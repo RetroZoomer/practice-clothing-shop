@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.retrozoomer.practiceclothingshop.entity.product.Product;
 import ru.retrozoomer.practiceclothingshop.repository.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class ProductService {
@@ -29,5 +31,17 @@ public class ProductService {
 
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    public List<Product> getRandomProducts() {
+        List<Product> productsFromDB = productRepository.findAll();
+        int pCount = productsFromDB.size();
+        Random r = new Random();
+        List<Product> randomProducts = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            int randomId = r.nextInt(pCount);
+            randomProducts.add(productsFromDB.get(randomId));
+        }
+        return randomProducts;
     }
 }

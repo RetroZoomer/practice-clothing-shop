@@ -1,6 +1,6 @@
 package ru.retrozoomer.practiceclothingshop.entity.product;
 
-public enum Egender {
+public enum EGender {
     MAN,
     WOMAN,
     IT

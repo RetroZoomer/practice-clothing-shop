@@ -1,5 +1,6 @@
 package ru.retrozoomer.practiceclothingshop.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
+@Tag(name = "Product", description = "The Product API")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -18,6 +20,12 @@ public class ProductController {
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.findAllProducts();
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<List<Product>> getRandomProducts() {
+        List<Product> products = productService.getRandomProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 

@@ -1,7 +1,6 @@
 package ru.retrozoomer.practiceclothingshop.entity.product;
 
 import lombok.Data;
-import ru.retrozoomer.practiceclothingshop.entity.user.User;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -21,7 +20,7 @@ public class Product {
     private ECategory category;
 
     @Enumerated(EnumType.STRING)
-    private Egender gender;
+    private EGender gender;
 
     private String description;
 
@@ -30,6 +29,6 @@ public class Product {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Size> sizes;
 
-    @ManyToMany(mappedBy = "products")
-    private Set<User> users;
+//    @ManyToMany(mappedBy = "products")
+//    private Set<User> users;
 }
