@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.retrozoomer.practiceclothingshop.entity.user.User;
 import ru.retrozoomer.practiceclothingshop.service.UserService;
@@ -45,6 +46,7 @@ public class UserController {
     }
 
     @PutMapping("/update")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<User> updateUser(@RequestBody User user)  {
         try {
             User updateUser = userService.updateUser(user);

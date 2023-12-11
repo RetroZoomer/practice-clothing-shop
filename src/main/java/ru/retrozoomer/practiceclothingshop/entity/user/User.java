@@ -1,14 +1,16 @@
 package ru.retrozoomer.practiceclothingshop.entity.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.retrozoomer.practiceclothingshop.entity.product.Product;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -35,7 +37,24 @@ public class User implements Serializable, UserDetails {
 //    private Set<Product> products;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Role> roles;
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(Long id, String username, String password, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User() {}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

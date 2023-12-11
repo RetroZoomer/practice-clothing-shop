@@ -4,26 +4,28 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "\"role\"")
-public class Role implements GrantedAuthority {
+public class Role implements GrantedAuthority, Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private ERole name;
-    @Transient
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
 
     public Role(Long id, ERole name) {
         this.id = id;
         this.name = name;
     }
 
-    public Role() {
+    public Role() {}
 
+    public Role(ERole name) {
+        this.name = name;
     }
 
     @Override
