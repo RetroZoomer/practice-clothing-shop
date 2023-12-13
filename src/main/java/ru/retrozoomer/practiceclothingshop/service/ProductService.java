@@ -29,6 +29,12 @@ public class ProductService {
         return product;
     }
 
+    public Product updateProduct(Product product) {
+        Optional<Product> productDB = productRepository.findById(product.getId());
+        productRepository.save(product);
+        return product;
+    }
+
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
@@ -38,7 +44,7 @@ public class ProductService {
         int pCount = productsFromDB.size();
         Random r = new Random();
         List<Product> randomProducts = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             int randomId = r.nextInt(pCount);
             randomProducts.add(productsFromDB.get(randomId));
         }

@@ -48,8 +48,6 @@ public class UserService implements UserDetailsService {
     }
 
     public User saveUser(User user) {
-        User userFromDb = userRepository.findByUsername(user.getUsername());
-
         Set<Role> roles = new HashSet<>();
 
         Role userRole = roleRepository.findByName(ERole.ROLE_USER)

@@ -10,6 +10,7 @@ import java.util.Set;
 @Table(name = "\"product\"")
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -19,9 +20,6 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ECategory category;
 
-    @Enumerated(EnumType.STRING)
-    private EGender gender;
-
     private String description;
 
     private double price;
@@ -29,6 +27,4 @@ public class Product {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Size> sizes;
 
-//    @ManyToMany(mappedBy = "products")
-//    private Set<User> users;
 }

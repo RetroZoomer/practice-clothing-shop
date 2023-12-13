@@ -1,0 +1,90 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-products-to-table-product
+      author: RetroZoomer
+      changes:
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  value: "1"
+              - column:
+                  name: name
+                  value: "Куртка"
+              - column:
+                  name: description
+                  value: "Теплая куртка"
+              - column:
+                  name: price
+                  value: "263.3"
+              - column:
+                  name: category
+                  value: "Одежда"
+              - column:
+                  name: image
+                  value: "https://main-cdn.sbermegamarket.ru/big2/hlr-system/185/528/389/394/224/600013292127b0.jpeg"
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  value: "2"
+              - column:
+                  name: name
+                  value: "Ботинки женские Bugatti 7714"
+              - column:
+                  name: description
+                  value: "Женские ботинки"
+              - column:
+                  name: price
+                  value: "45"
+              - column:
+                  name: category
+                  value: "Обувь"
+              - column:
+                  name: image
+                  value: "https://main-cdn.sbermegamarket.ru/big2/hlr-system/159/290/135/913/117/36/100048516558b0.jpg"
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  value: "3"
+              - column:
+                  name: name
+                  value: "Шарф"
+              - column:
+                  name: description
+                  value: "Шарф мужской MARCO DI RADI MDR2209ТА9016"
+              - column:
+                  name: price
+                  value: "20.5"
+              - column:
+                  name: category
+                  value: "Одежда"
+              - column:
+                  name: image
+                  value: "https://main-cdn.sbermegamarket.ru/big2/hlr-system/-21/372/091/419/114/25/100037679211b0.JPG"
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  value: "4"
+              - column:
+                  name: name
+                  value: "Перчатки женские"
+              - column:
+                  name: description
+                  value: "Перчатки женские Clarissa CL*S*W*2335/00/32000"
+              - column:
+                  name: price
+                  value: "30"
+              - column:
+                  name: category
+                  value: "Одежда"
+              - column:
+                  name: image
+                  value: "https://main-cdn.sbermegamarket.ru/big2/hlr-system/-74/298/706/910/202/048/600013057083b0.jpeg"
+

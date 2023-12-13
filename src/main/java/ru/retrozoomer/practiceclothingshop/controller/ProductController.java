@@ -52,7 +52,7 @@ public class ProductController {
     @PutMapping("/update")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product)  {
         try {
-            Product updateProduct = productService.saveProduct(product);
+            Product updateProduct = productService.updateProduct(product);
             return new ResponseEntity<>(updateProduct, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
